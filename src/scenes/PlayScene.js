@@ -11,25 +11,19 @@ class PlayScene extends Phaser.Scene {
 
     preload() {
         // Load the player/police man sprites here
-        this.load.image('player', '../Assets/player_right.png');
-        this.load.image('player2', '../Assets/player_left.png');
-        this.load.image('shootleft', '../Assets/GuyLShoot.png');
-        this.load.image('shootright', '../Assets/GuyRShoot.png');
-        this.load.image('shootingDown', '../Assets/GuyDShoot.png');
-        this.load.image('policeRight', '../Assets/Police.png');
-        this.load.image('policeLeft', '../Assets/PoliceL.png');
-
-        this.load.image('bulletright', '../Assets/bulletright.png');
-        this.load.image('bulletleft', '../Assets/bulletleft.png');
-
-        // Load the block sprite
-        this.load.image('block', '../Assets/block.png');
-        this.load.image("tiles", "../Assets/Prison_A5.png");
-        this.load.tilemapTiledJSON("map", "../Assets/tilemap.json");
-
-        // Load audio assets
-        this.load.audio("gunshot", "../Assets/734059__dthetech__dd-shotgun-2b.wav");
-        this.load.audio("loweredGunshot", "../Assets/734059__dthetech__dd-shotgun-2b.wav");
+        this.load.image('player', 'Assets/player_right.png');
+        this.load.image('player2', 'Assets/player_left.png');
+        this.load.image('shootleft', 'Assets/GuyLShoot.png');
+        this.load.image('shootright', 'Assets/GuyRShoot.png');
+        this.load.image('shootingDown', 'Assets/GuyDShoot.png');
+        this.load.image('policeRight', 'Assets/Police.png');
+        this.load.image('policeLeft', 'Assets/PoliceL.png');
+        this.load.image('bulletright', 'Assets/bulletright.png');
+        this.load.image('bulletleft', 'Assets/bulletleft.png');
+        this.load.image('block', 'Assets/block.png');
+        this.load.image('tiles', 'Assets/Prison_A5.png');
+        this.load.tilemapTiledJSON('map', 'Assets/tilemap.json');
+        this.load.audio('gameMusic', 'Assets/the_big_heist.wav');
     }
 
     create() {
