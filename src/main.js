@@ -10,7 +10,7 @@ var config =
         arcade: 
         {
             gravity: { y: 5000 },
-            debug: true // Enable debug to visualize collision boundaries
+            //debug: true // Enable debug to visualize collision boundaries
         }
     },
 

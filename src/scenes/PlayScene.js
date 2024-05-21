@@ -6,6 +6,7 @@ class PlayScene extends Phaser.Scene {
         this.block;
         this.bulletsRight;
         this.bulletsLeft;
+        this.spacePressed = false; // Add this flag
     }
 
     preload() {
@@ -56,12 +57,16 @@ class PlayScene extends Phaser.Scene {
         // Set up collision between player and the collision layer
         this.physics.add.collider(this.player, collisionLayer);
 
-        // Input Events
+      
         this.cursors = this.input.keyboard.createCursorKeys();
         this.cursors.a = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         this.cursors.d = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-        this.cursors.s = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);  // Adding the S key
-        this.cursors.space = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);  // Add space key
+        this.cursors.s = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+        this.cursors.space = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+        this.cursors.space.on('down', () => { this.spacePressed = true; });
+        this.cursors.space.on('up', () => { this.spacePressed = false; });
+
+
 
         // Camera setup
         this.cameras.main.startFollow(this.player);
@@ -122,7 +127,7 @@ class PlayScene extends Phaser.Scene {
         // Reset player velocity (movement)
         this.player.setVelocityX(0);
         
-        var spacePressed = this.cursors.space.isDown;
+        var spacePressed = this.spacePressed;
     
         // Check if the player is shooting
         if (spacePressed) {
@@ -131,11 +136,10 @@ class PlayScene extends Phaser.Scene {
 
         }
 
-
         // Horizontal movement
         if ((this.cursors.left.isDown || this.cursors.a.isDown) && spacePressed) {
             this.player.setVelocityX(600);
-            this.player.setVelocityY(1000);  // Move left when left arrow and space are presseds
+            this.player.setVelocityY(1000);  // Move left when left arrow and space are pressed
             this.player.setTexture('shootleft'); 
 
             if (!this.facingLeft) {
